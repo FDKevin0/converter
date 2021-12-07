@@ -1,4 +1,4 @@
-package converter
+package table2struct
 
 import (
 	"database/sql"
@@ -275,7 +275,7 @@ func (t *Table2Struct) getColumns(table ...string) (tableColumns map[string][]co
 
 	rows, err := t.db.Query(sqlStr)
 	if err != nil {
-		log.Println("Error reading table information: ", err.Error())
+		log.Println("Error reading table2struct information: ", err.Error())
 		return
 	}
 

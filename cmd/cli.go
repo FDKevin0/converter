@@ -1,13 +1,13 @@
-package main
+package cmd
 
 import (
 	"flag"
 	"fmt"
-	"github.com/gohouse/converter"
+	"github.com/FDKevin0/converter/table2struct"
 	"log"
 )
 
-func main() {
+func Execute() {
 	parser()
 }
 
@@ -36,14 +36,14 @@ func parser() {
 	// 版本号
 	if *version || *v {
 		fmt.Println(fmt.Sprintf("\n version: %s\n %s\n using -h param for more help \n",
-			converter.VERSION, converter.VERSION_TEXT))
+			table2struct.Version, table2struct.VersionText))
 		return
 	}
 
 	// 初始化
-	t2t := converter.NewTable2Struct()
+	t2t := table2struct.NewTable2Struct()
 	// 个性化配置
-	t2t.Config(&converter.T2tConfig{
+	t2t.Config(&table2struct.T2tConfig{
 		// 如果字段首字母本来就是大写, 就不添加tag, 默认false添加, true不添加
 		RmTagIfUcFirsted: false,
 		// tag的字段名字是否转换为小写, 如果本身有大写字母的话, 默认false不转
